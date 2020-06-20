@@ -1,3 +1,107 @@
 {% extends 'base.html' %} {% block content %}
-    new recipe from base.html
+
+<div class="text-center">
+    <h2>Add new recipe</h2>
+</div>
+
+<!-- Add new recipe form -->
+
+<div class="row">
+    <form>
+        <div class="form-row">
+            <div class="col-sm-12">
+                <label for="recipe_name">Recipe name:</label>
+                <input class="form-control" id="recipe_name" name="recipe_name" type="text" placeholder="Recipe name" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-12">
+                <label for="recipe_info">Short information about the recipe:</label>
+                <input class="form-control " id="recipe_info" name="recipe_info" type="text" placeholder="Short description" required> 
+                
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-sm-12 col-md-6">
+                <label for="cooking_time">Cooking Time:</label>
+                <input class="form-control" id="cooking_time" name="cooking_time" type="number" placeholder="Enter the cooking time in minutes:" required>
+            </div>
+            <!-- Recipe category selector values from DB.categories -->
+            <div class="col-sm-12 col-md-6" >        
+                <label for="category_name">Choose dietary category (optional):</label>
+                <select class="custom-select" id="category_name" name="category_name">
+                    <option value="" disabled selected>Choose dietary category</option>
+                    {% for cat in categories %}
+                    <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <!-- /Recipe category selector values from DB.categories -->
+        </div>
+
+        <div class="form-row">
+            <div class="col-sm-12 col-md-6">
+                <label for="servings">Servings size:</label>
+                <input class="form-control" id="servings" name="servings" type="number" placeholder="Enter servings size:" required>
+                <hr class="small">
+            </div>
+            
+            <!-- /Recipe difficulty selector values from DB.difficulty -->
+            <div class="col-sm-12 col-md-6">        
+                <label for="recipe_difficulty">Recipe difficulty:</label>
+                <select class="custom-select" id="recipe_difficulty" name="recipe_difficulty" required>
+                    <option value="" disabled selected>Choose difficulty for your recipe</option>
+                    {% for diff in difficulty %}
+                    <option value="{{diff.recipe_difficulty}}">{{diff.recipe_difficulty}}</option>
+                    {% endfor %}
+                </select>
+                <hr class="small">
+            </div>
+            <!-- /Recipe difficulty selector values from DB.difficulty -->
+        </div>
+
+        <!-- Ingredient input-->
+        <div class="form-row">
+            <div class="col-sm-12 col-md-12">
+                <label for="ingredients">Required ingredients:</label>
+                <span id="ingredientHelp" class="form-text text-muted">Enter all ingredient in a new row (with the Enter key), please!</span> 
+                <textarea class="form-control" id="ingredients" name="ingredients" type="text" rows="1" cols="175" placeholder="For example: potato 500g or  1 slice of lemon" required></textarea>
+            </div>            
+        </div>
+        <!-- /Ingredient input-->
+
+        <!-- Cooking instructions input-->
+        <div class="form-row">
+            <div class="col-sm-12 col-md-12">                
+                <label for="recipe_instructions">Enter the cooking, preparation instructions:</label>
+                <span id="instructionHelp" class="form-text text-muted">Enter all ingredient in a new row, please!</span>
+                <textarea class="form-control" id="recipe_instructions" name="recipe_instructions" rows="1" cols="175" placeholder="Enter the cooking, preparation instructions:" required></textarea>
+            </div>           
+        </div>
+        <!-- /Cooking instructions input-->
+
+        <!-- Required tools, kitchen applicants input-->
+        <div class="form-row">
+            <div class="col-sm-12 col-md-12">                
+                <label for="steps">Required tools, kitchen applicants for the recipe:</label>
+                <span class="form-text text-muted">Enter all tools, applicants in a new row, please!</span>
+                <textarea class="form-control" onkeyup="adjustHeight(this)" id="you_will_need" name="you_will_need" rows="1" cols="175" placeholder="For expample: blender, hand mixer, etc" required></textarea>
+                <hr>
+            </div>           
+        </div>
+        <!-- Required tools, kitchen applicants input-->
+
+        <!-- Form submit button -->
+        <div class="form-row">
+            <div class="col-sm-6 col-md-4 mx-auto">
+                <button type="submit" class="btn btn-dark btn-block ">Add new recipe</button>
+            </div>
+        </div>
+        <!-- /Form submit button -->
+
+    </form>
+</div>
+
+<!-- /Add new recipe form -->
 {% endblock %}
