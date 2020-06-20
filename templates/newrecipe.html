@@ -7,26 +7,33 @@
 <!-- Add new recipe form -->
 
 <div class="row">
-    <form>
+    <form action="{{ url_for('insert_recipe') }}" method="POST">
         <div class="form-row">
+            <!-- Recipe name input -->
             <div class="col-sm-12">
                 <label for="recipe_name">Recipe name:</label>
                 <input class="form-control" id="recipe_name" name="recipe_name" type="text" placeholder="Recipe name" required>
             </div>
+            <!-- /Recipe name input -->
         </div>
         <div class="form-row">
+            <!--  Recipe short information input -->
             <div class="col-sm-12">
                 <label for="recipe_info">Short information about the recipe:</label>
-                <input class="form-control " id="recipe_info" name="recipe_info" type="text" placeholder="Short description" required> 
-                
+                <input class="form-control " id="recipe_info" name="recipe_info" type="text" placeholder="Short description" required>    
             </div>
+            <!--  Recipe short information input -->
         </div>
 
         <div class="form-row">
+
+            <!-- Cooking time input -->            
             <div class="col-sm-12 col-md-6">
                 <label for="cooking_time">Cooking Time:</label>
                 <input class="form-control" id="cooking_time" name="cooking_time" type="number" placeholder="Enter the cooking time in minutes:" required>
             </div>
+            <!-- /Cooking time input -->
+
             <!-- Recipe category selector values from DB.categories -->
             <div class="col-sm-12 col-md-6" >        
                 <label for="category_name">Choose dietary category (optional):</label>
@@ -41,13 +48,15 @@
         </div>
 
         <div class="form-row">
+            <!-- Serving size input -->
             <div class="col-sm-12 col-md-6">
                 <label for="servings">Servings size:</label>
                 <input class="form-control" id="servings" name="servings" type="number" placeholder="Enter servings size:" required>
                 <hr class="small">
             </div>
-            
-            <!-- /Recipe difficulty selector values from DB.difficulty -->
+            <!-- /Serving size input -->
+
+            <!-- Recipe difficulty selector values from DB.difficulty -->
             <div class="col-sm-12 col-md-6">        
                 <label for="recipe_difficulty">Recipe difficulty:</label>
                 <select class="custom-select" id="recipe_difficulty" name="recipe_difficulty" required>
