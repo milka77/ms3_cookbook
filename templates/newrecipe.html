@@ -66,7 +66,7 @@
             <div class="col-sm-12 col-md-12">
                 <label for="ingredients">Required ingredients:</label>
                 <span id="ingredientHelp" class="form-text text-muted">Enter all ingredient in a new row (with the Enter key), please!</span> 
-                <textarea class="form-control" id="ingredients" name="ingredients" type="text" rows="1" cols="175" placeholder="For example: potato 500g or  1 slice of lemon" required></textarea>
+                <textarea class="form-control" onkeyup="adjustHeight(this)" id="ingredients" name="ingredients" type="text" rows="1" cols="175" placeholder="For example: potato 500g or  1 slice of lemon" required></textarea>
             </div>            
         </div>
         <!-- /Ingredient input-->
@@ -76,7 +76,7 @@
             <div class="col-sm-12 col-md-12">                
                 <label for="recipe_instructions">Enter the cooking, preparation instructions:</label>
                 <span id="instructionHelp" class="form-text text-muted">Enter all ingredient in a new row, please!</span>
-                <textarea class="form-control" id="recipe_instructions" name="recipe_instructions" rows="1" cols="175" placeholder="Enter the cooking, preparation instructions:" required></textarea>
+                <textarea class="form-control" onkeyup="adjustHeight(this)" id="recipe_instructions" name="recipe_instructions" rows="1" cols="175" placeholder="Enter the cooking, preparation instructions:" required></textarea>
             </div>           
         </div>
         <!-- /Cooking instructions input-->
