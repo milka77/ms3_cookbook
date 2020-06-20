@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+<h2 class="text-center">Recipes</h2>
+
+<div class="row">
+    <!-- A for loop to display the recipes form the database  -->
+    {% for recipe in recipes %}
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-6">
+                <img src="https://production-media.gousto.co.uk/cms/recipe-step-image/592.-step-5-x750.jpg" class="card-img" alt="recipe image">
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{recipe.recipe_name}}</h5>
+                    <p class="card-text">{{recipe.recipe_info}}</p>
+                    <div class="row ">
+                        <a  href="#" class="btn btn-primary mx-auto btn-recipe">View recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- /A for loop to display the recipes form the database  -->
+</div>
+{% endblock %}

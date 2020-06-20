@@ -51,6 +51,12 @@ def insert_recipe():
     flash('Recipe was added succesfully!')
     return redirect(url_for('index'))
 
+
+@app.route('/recipes')
+def recipes():
+    return render_template('recipes.html',
+    recipes=mongo.db.recipes.find())
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
         port=os.environ.get('PORT'),
