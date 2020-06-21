@@ -62,11 +62,19 @@ def recipes():
     return render_template('recipes.html',
     recipes=mongo.db.recipes.find())
 
+
 # Detailed page form the selected recipe
 @app.route('/show_recipe/<recipe_id>')
 def show_recipe(recipe_id):
     _recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('showrecipe.html', recipe=_recipe)
+
+
+# Contact us page
+@app.route('/contact_us',)
+def contact_us():
+    return render_template('contactus.html')
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
