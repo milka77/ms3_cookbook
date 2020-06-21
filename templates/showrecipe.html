@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block content %}
+<div class="col">
+    <div class="col-lg-12 text-center">
+        <h3>{{recipe.recipe_name}}</h3>
+        <hr>
+    </div>
+    <!-- Recipe informations and picture -->
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 recipe-left">
+            <p><i class="fas fa-info"></i> {{recipe.recipe_info}}</p>
+            <p> {{recipe.category_name}}</p>
+            <p><i class="fas fa-fist-raised"></i> {{recipe.dificulty}}</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p><i class="far fa-clock"></i> {{recipe.cooking_time}} - mins</p>
+                </div>
+                <div class="col-sm-6">
+                    <p><i class="fas fa-utensils"></i> {{recipe.servings_size}} dishes</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <img class="recipe_image" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-vegan-meatloaf-still001-1556054929.jpg?crop=0.652xw:0.578xh;0.207xw,0.231xh&resize=1200:*" alt="recipe picture"/>
+        </div>
+    </div>
+    <!-- /Recipe informations and picture -->
+
+    <!-- Ingredients and required tools for the recipe -->
+    <div class="row second-row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <h5>Ingredients:</h5>
+            <ul>
+                {% for ingredient in recipe.ingredients %}
+                    <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <h5>Required tools and items for the recipe:</h5>
+            <ul>
+                {% for tools in recipe.you_will_need %}
+                    <li>{{ tools }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- /Ingredients and required tools for the recipe -->
+
+    <!-- Preparation and cooking instructions of the recipe -->
+    <div class="row">
+        <div class="col">
+            <h5>Preparation and cooking instructions:</h5>
+            <ul>
+                {% for instruction in recipe.instructions %}
+                    <li>{{ instruction }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- /Preparation and cooking information fo the recipe -->
+
+</div>
+
+{% endblock %}

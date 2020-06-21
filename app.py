@@ -17,10 +17,13 @@ mongo = PyMongo(app)
 
 ''' Routes and viwes '''
 @app.route('/')
+# index - View of the landing page
 @app.route('/index')
 def index():
     return render_template('index.html')
 
+
+# View from the newrecipe.html to add new recipes to the database
 @app.route('/new_recipe')
 def new_recipe():
     return render_template('newrecipe.html',
@@ -28,6 +31,7 @@ def new_recipe():
     difficulty=mongo.db.difficulty.find())
 
 
+# Insert_recipe function to add the recipe into the database
 @app.route('/insert_recipe', methods=["GET", "POST"])
 def insert_recipe():
     recipes = mongo.db.recipes
@@ -52,10 +56,17 @@ def insert_recipe():
     return redirect(url_for('index'))
 
 
+# Show all existing recipes from the database
 @app.route('/recipes')
 def recipes():
     return render_template('recipes.html',
     recipes=mongo.db.recipes.find())
+
+# Detailed page form the selected recipe
+@app.route('/show_recipe/<recipe_id>')
+def show_recipe(recipe_id):
+    _recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template('showrecipe.html', recipe=_recipe)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
