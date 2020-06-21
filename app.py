@@ -1,7 +1,7 @@
 import os
-from flask import Flask, flash, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for
 import env as config
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 
 
@@ -29,7 +29,7 @@ def index():
 @app.route('/new_recipe')
 def new_recipe():
     return render_template('newrecipe.html',
-    categories=mongo.db.categories.find(),
+    categories=mongo.db.categories.find().sort('category_name', pymongo.ASCENDING),
     difficulty=mongo.db.difficulty.find())
 
 
@@ -54,7 +54,6 @@ def insert_recipe():
             "you_will_need": you_will_need,
         }
     recipes.insert_one(add_recipe)
-    flash('Recipe was added succesfully!')
     return redirect(url_for('index'))
 
 
