@@ -20,7 +20,9 @@ mongo = PyMongo(app)
 # index - View of the landing page
 @app.route('/index')
 def index():
-    return render_template('index.html')
+
+    recipe_numbers = mongo.db.recipes.count()
+    return render_template('index.html', allrecipes=recipe_numbers)
 
 
 # View from the newrecipe.html to add new recipes to the database
@@ -71,7 +73,7 @@ def show_recipe(recipe_id):
 
 
 # Contact us page
-@app.route('/contact_us',)
+@app.route('/contact_us', methods=["GET", "POST"])
 def contact_us():
     return render_template('contactus.html')
 

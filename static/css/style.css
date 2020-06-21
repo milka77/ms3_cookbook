@@ -89,6 +89,27 @@ textarea {
     color: rgba(0,0,0,0.8)
 }
 
+/* Contact us */
+.email-success {
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: 50%;
+    margin: auto;
+    border: 1px solid;
+    border-radius: 8px;
+    background-color: rgb(78, 219, 78);
+}
+
+.email-failed {
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: 50%;
+    margin: auto;
+    border: 1px solid;
+    border-radius: 8px;
+    background-color: rgb(228, 74, 74);
+}
+
 /* Footer */
 #footer {
     color: #fafafa;
