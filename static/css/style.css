@@ -3,8 +3,8 @@ body {
     padding-bottom: 100px;
 }
 
-textarea {
-    overflow-y: hidden;
+html {
+    scroll-behavior: smooth;
 }
 
 /* Showrecipe.html styles */
@@ -33,6 +33,10 @@ textarea {
 
 label {
     margin: 0.5rem 0 0 0.2rem;
+}
+
+textarea {
+    overflow-y: hidden;
 }
 
 /* recipes.html styles */
