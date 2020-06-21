@@ -7,6 +7,10 @@ html {
     scroll-behavior: smooth;
 }
 
+h2 {
+    margin: 20px 0;
+}
+
 /* Showrecipe.html styles */
 .recipe_image {
     max-width: 100%;
@@ -39,6 +43,10 @@ textarea {
     overflow-y: hidden;
 }
 
+.fa-asterisk:before {
+    color: red;
+    font-size: 8px;
+}
 /* recipes.html styles */
 .btn-recipe {
     position: absolute;
@@ -81,6 +89,22 @@ textarea {
     color: rgba(0,0,0,0.8)
 }
 
+/* Footer */
+#footer {
+    color: #fafafa;
+    height: 3%;
+    
+}
+
+#footer a {
+    color: #fafafa;
+    padding-top: 2px;
+}
+
+.divider {
+    padding: 0 0.5rem;
+}
+
 /* Mobile screen size styles */
 @media only screen and (max-width: 768px) {
     .small {
@@ -89,5 +113,10 @@ textarea {
     .recipe-left {
         max-width: 92%;
         margin: 2% auto 2%;
+    }
+
+    /* Footer */
+    #footer {
+        height: auto;
     }
 }
