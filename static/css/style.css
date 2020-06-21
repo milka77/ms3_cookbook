@@ -61,6 +61,22 @@ label {
     color: rgba(0,0,0,0.8)
 }
 
+/* Page header */
+.logo {
+    background-image: url("/static/images/various-spices-and-herbs-website-header.jpg");
+    background-size: cover;
+    height: 255px;
+    margin-bottom: -55px;
+    padding-top: 4%;
+    color: #fafafa;
+    text-shadow: 0px 0px 6px #000000, -3px -3px 6px #000000, 3px 3px 6px #000000, 3px 3px 6px #000000;
+
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0,0,0,0.8)
+}
+
 /* Mobile screen size styles */
 @media only screen and (max-width: 768px) {
     .small {
