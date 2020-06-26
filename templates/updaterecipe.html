@@ -76,9 +76,9 @@
                 <label for="ingredients">Required ingredients:<i class="fas fa-asterisk align-top"></i></label>
                 <span id="ingredientHelp" class="form-text text-muted">Enter all ingredient in a new row (with the Enter key), please!</span> 
                 <textarea class="form-control" onkeyup="adjustHeight(this)" id="ingredients" name="ingredients" type="text" rows="1" cols="175" placeholder="For example: potato 500g  or  1 slice of lemon" required>
-                {%- for ingredient in recipe.ingredients -%}
-                {{ ingredient  }} <br/>
-                {%- endfor -%}
+                {% for ingredient in recipe.ingredients -%}
+                {{ ingredient  }}
+                {% endfor -%}
                 </textarea>
             </div>            
         </div>
