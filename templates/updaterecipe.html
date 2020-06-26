@@ -1,18 +1,18 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="text-center">
-    <h2>Add new recipe</h2>
+    <h2>Edit recipe</h2>
 </div>
 
 <!-- Add new recipe form -->
 
 <div class="row">
-    <form action="{{ url_for('insert_recipe') }}" enctype="multipart/form-data" method="POST">
+    <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" enctype="multipart/form-data" method="POST">
         <div class="form-row">
             <!-- Recipe name input -->
             <div class="col-sm-12">
                 <label for="recipe_name">Recipe name:<i class="fas fa-asterisk align-top"></i></label>
-                <input class="form-control" id="recipe_name" name="recipe_name" type="text" placeholder="Recipe name" required>
+                <input class="form-control" id="recipe_name" name="recipe_name" type="text" placeholder="Recipe name" required value="{{recipe.recipe_name}}">
             </div>
             <!-- /Recipe name input -->
         </div>
@@ -20,7 +20,7 @@
             <!--  Recipe short information input -->
             <div class="col-sm-12">
                 <label for="recipe_info">Short information about the recipe:<i class="fas fa-asterisk align-top"></i></label>
-                <input class="form-control " id="recipe_info" name="recipe_info" type="text" placeholder="Short description" required>    
+                <input class="form-control " id="recipe_info" name="recipe_info" type="text" placeholder="Short description" required value="{{recipe.recipe_info}}">    
             </div>
             <!--  Recipe short information input -->
         </div>
@@ -30,7 +30,7 @@
             <!-- Cooking time input -->            
             <div class="col-sm-12 col-md-6">
                 <label for="cooking_time">Cooking Time:<i class="fas fa-asterisk align-top"></i></label>
-                <input class="form-control" id="cooking_time" name="cooking_time" type="number" placeholder="Enter the cooking time in minutes:" required>
+                <input class="form-control" id="cooking_time" name="cooking_time" type="number" placeholder="Enter the cooking time in minutes:" required value="{{recipe.cooking_time}}">
             </div>
             <!-- /Cooking time input -->
 
@@ -51,7 +51,7 @@
             <!-- Serving size input -->
             <div class="col-sm-12 col-md-6">
                 <label for="servings">Servings size:<i class="fas fa-asterisk align-top"></i></label>
-                <input class="form-control" id="servings_size" name="servings_size" type="number" placeholder="Enter servings size:" required>
+                <input class="form-control" id="servings_size" name="servings_size" type="number" placeholder="Enter servings size:" required value="{{recipe.servings_size}}">
                 <hr class="small">
             </div>
             <!-- /Serving size input -->
@@ -75,7 +75,11 @@
             <div class="col-sm-12 col-md-12">
                 <label for="ingredients">Required ingredients:<i class="fas fa-asterisk align-top"></i></label>
                 <span id="ingredientHelp" class="form-text text-muted">Enter all ingredient in a new row (with the Enter key), please!</span> 
-                <textarea class="form-control" onkeyup="adjustHeight(this)" id="ingredients" name="ingredients" type="text" rows="1" cols="175" placeholder="For example: potato 500g  or  1 slice of lemon" required></textarea>
+                <textarea class="form-control" onkeyup="adjustHeight(this)" id="ingredients" name="ingredients" type="text" rows="1" cols="175" placeholder="For example: potato 500g  or  1 slice of lemon" required>
+                {%- for ingredient in recipe.ingredients -%}
+                {{ ingredient  }} <br/>
+                {%- endfor -%}
+                </textarea>
             </div>            
         </div>
         <!-- /Ingredient input-->
@@ -113,7 +117,7 @@
         <!-- Form submit button -->
         <div class="form-row">
             <div class="col-sm-6 col-md-4 mx-auto">
-                <button type="submit" class="btn btn-dark btn-block ">Add new recipe</button>
+                <button type="submit" class="btn btn-dark btn-block ">Update recipe</button>
                 <a href="{{ url_for('recipes') }}" class="btn btn-outline-danger btn-block ">Cancel</a>
             </div>
         </div>

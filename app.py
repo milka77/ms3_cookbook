@@ -45,9 +45,7 @@ def insert_recipe():
     ingredients = request.form.get('ingredients').splitlines()
     instructions = request.form.get('recipe_instructions').splitlines()
     you_will_need = request.form.get('you_will_need').splitlines()
-    recipe_image = request.files['recipe_image']
-   
-        
+    recipe_image = request.files['recipe_image']     
 
     if request.method == 'POST':
         mongo.save_file(recipe_image.filename, recipe_image)
@@ -84,6 +82,42 @@ def show_recipe(recipe_id):
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    return redirect(url_for('recipes'))
+
+
+# Editting recipe page
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    _recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+    _categories = mongo.db.categories.find()
+    _difficulty = mongo.db.difficulty.find()
+    return render_template('updaterecipe.html', recipe=_recipe, categories=_categories, difficulty=_difficulty)
+
+
+# Updating recipe function
+@app.route('/update_recipe/<recipe_id>', methods=["POST"])
+def update_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    ingredients = request.form.get('ingredients').splitlines()
+    instructions = request.form.get('recipe_instructions').splitlines()
+    you_will_need = request.form.get('you_will_need').splitlines()
+    recipe_image = request.files['recipe_image']  
+    
+    if request.method == 'POST':
+        mongo.save_file(recipe_image.filename, recipe_image)
+        recipes.update({'_id': ObjectId(recipe_id)},
+        {
+            "recipe_name": request.form.get('recipe_name'),
+            "recipe_info": request.form.get('recipe_info'),
+            "cooking_time": request.form.get('cooking_time'),
+            "category_name": request.form.get('category_name'),
+            "servings_size": request.form.get('servings_size'),
+            "recipe_difficulty": request.form.get('recipe_difficulty'),
+            "ingredients": ingredients,
+            "instructions": instructions,
+            "you_will_need": you_will_need,
+            "recipe_image_name": recipe_image.filename
+        })
     return redirect(url_for('recipes'))
 
 
