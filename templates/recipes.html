@@ -7,7 +7,11 @@
     <div class="card mb-3" style="width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-6">
+                {% if recipe.recipe_image_name %}
                 <img src="{{url_for('file', filename=recipe['recipe_image_name'])}}" class="card-img" alt="recipe image">
+                {% else %}
+                <img class="card-img" src="{{url_for('static', filename='images/img_placeholder.png')}}" alt="placeholder imgage"/>
+                {% endif %}
             </div>
             <div class="col-md-6">
                 <div class="card-body">

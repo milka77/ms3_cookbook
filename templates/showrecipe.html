@@ -26,7 +26,11 @@
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6">
+            {% if recipe.recipe_image_name %}
             <img class="recipe_image" src="{{url_for('file', filename=recipe['recipe_image_name'])}}" alt="recipe picture"/>
+            {% else %}
+            <img class="recipe_image" src="{{url_for('static', filename='images/img_placeholder.png')}}" alt="placeholder imgage"/>
+            {% endif %}
         </div>
     </div>
     <!-- /Recipe informations and picture -->
