@@ -7,7 +7,7 @@
 <!-- Add new recipe form -->
 
 <div class="row">
-    <form action="{{ url_for('insert_recipe') }}" method="POST">
+    <form action="{{ url_for('insert_recipe') }}" enctype="multipart/form-data" method="POST">
         <div class="form-row">
             <!-- Recipe name input -->
             <div class="col-sm-12">
@@ -93,22 +93,32 @@
         <!-- Required tools, kitchen applicants input-->
         <div class="form-row">
             <div class="col-sm-12 col-md-12">                
-                <label for="steps">Required tools, kitchen applicants for the recipe (optional):<i class="fas fa-asterisk align-top"></i></label>
+                <label for="steps">Required tools, kitchen applicants for the recipe (optional):</label>
                 <span class="form-text text-muted">Enter all tools, applicants in a new row, please!</span>
                 <textarea class="form-control" onkeyup="adjustHeight(this)" id="you_will_need" name="you_will_need" rows="1" cols="175" placeholder="For expample: blender, hand mixer, etc"></textarea>
-                <hr>
             </div>           
         </div>
-        <!-- Required tools, kitchen applicants input-->
+        <!-- /Required tools, kitchen applicants input-->
 
+        <!-- Recipe picture upload-->
+        <div class="form-row">
+            <div class="col-sm-6 col-md-12">
+                <label for="recipe_image">You can upload a picture for your recipe (optional):</label>
+                <input class="form-control-file" type="file" id="recipe_image" name="recipe_image">
+                <hr>
+            </div>    
+        </div>
+        <!-- /Recipe picture upload-->
+        
         <!-- Form submit button -->
         <div class="form-row">
             <div class="col-sm-6 col-md-4 mx-auto">
                 <button type="submit" class="btn btn-dark btn-block ">Add new recipe</button>
+                
             </div>
         </div>
         <!-- /Form submit button -->
-
+        
     </form>
 </div>
 

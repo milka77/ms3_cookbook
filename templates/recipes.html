@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 <h2 class="text-center">Recipes</h2>
-
-<div class="row">
+<hr>
+<div class="row recipe-list">
     <!-- A for loop to display the recipes form the database  -->
     {% for recipe in recipes %}
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3" style="width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-6">
-                <img src="https://production-media.gousto.co.uk/cms/recipe-step-image/592.-step-5-x750.jpg" class="card-img" alt="recipe image">
+                <img src="{{url_for('file', filename=recipe['recipe_image_name'])}}" class="card-img" alt="recipe image">
             </div>
             <div class="col-md-6">
                 <div class="card-body">
@@ -22,7 +22,9 @@
     </div>
     {% endfor %}
     <!-- /A for loop to display the recipes form the database  -->
+    
 </div>
+<hr>
 <div class="row">
     <a href="{{url_for('new_recipe')}}" class="btn btn-dark mx-auto">Add new recipe</a>
  </div>

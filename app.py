@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 # index - View of the landing page
 @app.route('/index')
 def index():
-
+    
     recipe_numbers = mongo.db.recipes.count()
     return render_template('index.html', allrecipes=recipe_numbers)
 
@@ -33,6 +33,11 @@ def new_recipe():
     difficulty=mongo.db.difficulty.find())
 
 
+@app.route('/file/<filename>')
+def file(filename):
+    return mongo.send_file(filename)
+
+
 # Insert_recipe function to add the recipe into the database
 @app.route('/insert_recipe', methods=["GET", "POST"])
 def insert_recipe():
@@ -40,9 +45,13 @@ def insert_recipe():
     ingredients = request.form.get('ingredients').splitlines()
     instructions = request.form.get('recipe_instructions').splitlines()
     you_will_need = request.form.get('you_will_need').splitlines()
+    recipe_image = request.files['recipe_image']
+   
+        
 
     if request.method == 'POST':
-        add_recipe = {
+        mongo.save_file(recipe_image.filename, recipe_image)
+        recipes.insert_one({
             "recipe_name": request.form.get('recipe_name'),
             "recipe_info": request.form.get('recipe_info'),
             "cooking_time": request.form.get('cooking_time'),
@@ -52,9 +61,9 @@ def insert_recipe():
             "ingredients": ingredients,
             "instructions": instructions,
             "you_will_need": you_will_need,
-        }
-    recipes.insert_one(add_recipe)
-    return redirect(url_for('index'))
+            "recipe_image_name": recipe_image.filename
+        })
+    return redirect(url_for('recipes'))
 
 
 # Show all existing recipes from the database
@@ -71,11 +80,32 @@ def show_recipe(recipe_id):
     return render_template('showrecipe.html', recipe=_recipe)
 
 
+# Navbar search function
+@app.route('/navbar_search', methods=["GET", "POST"])
+def navbar_search():
+    search_input = request.form.get('navbar_search')
+    recipe_found = mongo.db.recipes.find( {"$text": { "$search": str(search_input) } } )
+    
+    return render_template('result.html', results=recipe_found)
+
+
 # Contact us page
 @app.route('/contact_us', methods=["GET", "POST"])
 def contact_us():
     return render_template('contactus.html')
 
+
+
+
+@app.route('/add_file', methods=["GET", "POST"])
+def add_file():
+    recipe_image = request.files['recipe_image']
+    mongo.save_file(recipe_image.filename, recipe_image)
+    mongo.db.recipes.insert({ 
+        "recipe_name": request.form.get('recipe_name'),
+        "recipe_image_name": recipe_image.filename
+    })
+    return 'done'
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

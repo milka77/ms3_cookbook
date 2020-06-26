@@ -13,8 +13,8 @@ h2, h3 {
 
 /* Showrecipe.html styles */
 .recipe_image {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 525px;
+    max-height: 261px;
     margin: auto;
     border-radius: 8px;
 }
@@ -54,6 +54,14 @@ textarea {
     left: 30%;
 }
 
+.card-img {
+    width: 270px;
+    height: 180px;
+}
+
+.recipe-list {
+    margin-left: 1rem;
+}
 /* Navigation bar --------- */
 .cook-navbar {
     background-color: transparent;
