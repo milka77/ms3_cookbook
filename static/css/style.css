@@ -11,6 +11,31 @@ h2, h3 {
     margin: 20px 0;
 }
 
+/* Our brand stripe */
+#our-brand {
+    display: none;
+}
+
+.our-brand {
+    background-color: #e40202;
+    color: #fafafa;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: -1px;
+}
+
+.our-brand a {
+    color: #fafafa;
+}
+
+.our-brand a:hover {
+    color: #e40202;
+    background-color: #fafafa;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
 /* Showrecipe.html styles */
 .recipe_image {
     max-width: 525px;
@@ -66,6 +91,16 @@ textarea {
 .cook-navbar {
     background-color: transparent;
 }
+
+.navbar-toggler {
+    color:rgb(255,255,255);
+    border-color:rgb(255,255,255);
+}
+
+.navbar-toggler-icon {
+    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 .cook-navbar a {
     color: #fafafa;
     text-shadow: 0px 0px 6px #000000, -3px -3px 6px #000000, 3px 3px 6px #000000, 3px 3px 6px #000000;
