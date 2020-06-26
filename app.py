@@ -80,6 +80,13 @@ def show_recipe(recipe_id):
     return render_template('showrecipe.html', recipe=_recipe)
 
 
+# Deleting a recipe 
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    return redirect(url_for('recipes'))
+
+
 # Navbar search function
 @app.route('/navbar_search', methods=["GET", "POST"])
 def navbar_search():
