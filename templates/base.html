@@ -25,24 +25,38 @@
     <!-- /Page header above navigation bar -->
 
     <!-- Navigation bar with search function -->
-    <nav class="navbar sticky-top navbar-expand-lg  cook-navbar " id="nav">
+    <nav class="navbar navbar-expand-lg sticky-top cook-navbar" id="nav">
         <a class="navbar-brand" href="{{url_for('index')}}">Krisztian's Cook Book</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
                 <a class="nav-item nav-link" href="{{url_for('recipes')}}">Recipes <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-item nav-link" href="{{url_for('new_recipe')}}">New recipe</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-item nav-link" href="#">Our Brand</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-item nav-link" href="{{url_for('contact_us')}}">Contact Us</a>
-            </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action="{{ url_for('navbar_search') }}">
+            <input class="form-control mr-sm-2" type="search" id="navbar_search" name="navbar_search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+          </form>
         </div>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </nav>
+      </nav>
     <!-- /Navigation bar with search function -->
+
+    <div id="our-brand" class="container-fluid our-brand">
+        <span>Why not give a try to our self-branded kitchen equipment. for more information <a href="#" >click here! >>></a></span>
+    </div>
 
     <!-- The container for Flask content -->
     <div class="container">
