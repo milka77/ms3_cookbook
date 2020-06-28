@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, jsonify
+from flask import Flask, render_template, redirect, request, url_for
 import env as config
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
