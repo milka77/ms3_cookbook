@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, jsonify
 import env as config
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
@@ -9,13 +9,13 @@ app = Flask(__name__)
 
 app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 
-''' Database (mongoDB) confugirations: '''
+# Database (mongoDB) confugirations: 
 app.config["MONGO_DBNAME"] = 'cook_book'
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 
-''' Routes and viwes '''
+# Routes and viwes
 @app.route('/')
 # index - View of the landing page
 @app.route('/index')
