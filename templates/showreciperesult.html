@@ -7,23 +7,23 @@
     <!-- Recipe informations and picture -->
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6 recipe-left">
-            <p><i class="fas fa-info"></i> <span class="text-bold">Recipe short descriptions:</span> <br>{{recipe.recipe_info}}</p> 
-            <div>   
-                {% if recipe.category_name %}
-                    <p><i class="fas fa-seedling"></i> <span class="text-bold">Dietary type:</span> {{recipe.category_name}}</p>
-                {% else %}
-                    <p style="display: none;"></p>
-                {% endif %}
-            </div>
-            <p><i class="fas fa-fist-raised"></i> <span class="text-bold">Recipe difficulty:</span> {{recipe.recipe_difficulty}}</p>
-            <div class="row">
-                <div class="col-sm-6">
-                    <p><i class="far fa-clock"></i> <span class="text-bold">Cooking time:</span> {{recipe.cooking_time}}  mins</p>
+                <p><i class="fas fa-info"></i> <span class="text-bold">Recipe short descriptions:</span> <br>&nbsp;{{recipe.recipe_info}}</p> 
+                <div>   
+                    {% if recipe.category_name %}
+                        <p><i class="fas fa-seedling"></i> <span class="text-bold">Dietary type:</span> {{recipe.category_name}}</p>
+                    {% else %}
+                        <p style="display: none;"></p>
+                    {% endif %}
                 </div>
-                <div class="col-sm-6">
-                    <p><i class="fas fa-utensils"></i> <span class="text-bold">Serving size:</span> {{recipe.servings_size}} dishes</p>
+                <p><i class="fas fa-fist-raised"></i> <span class="text-bold">Recipe difficulty:</span> {{recipe.recipe_difficulty}}</p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><i class="far fa-clock"></i> <span class="text-bold">Cooking time:</span> {{recipe.cooking_time}}  mins</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p><i class="fas fa-utensils"></i> <span class="text-bold">Serving size:</span> {{recipe.servings_size}} dishes</p>
+                    </div>
                 </div>
-            </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6">
             {% if recipe.recipe_image_name %}
