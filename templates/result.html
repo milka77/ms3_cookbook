@@ -3,12 +3,34 @@
 
     <h2>Search result:</h2>
 
-   
-       
-    
+    <div class="row recipe-list">
     {% for result in results %}
-    <p>{{ result }}</p>
+    <div class="card mb-3" style="width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-6">
+                {% if result.recipe_image_name %}
+                <img src="{{url_for('file', filename=result['recipe_image_name'])}}" class="card-img" alt="recipe image">
+                {% else %}
+                <img class="card-img" src="{{url_for('static', filename='images/img_placeholder.png')}}" alt="placeholder imgage"/>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{result.recipe_name}}</h5>
+                    <p class="card-text">{{result.recipe_info}}</p>
+                    <div class="row ">
+                        <a  href="{{ url_for('show_search_result', result_id=result._id) }}" class="btn btn-primary mx-auto btn-recipe">View recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {% endfor %}
+    
+    </div>
+    <hr>
+    
+    
  
 
     

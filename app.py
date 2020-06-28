@@ -33,6 +33,7 @@ def new_recipe():
     difficulty=mongo.db.difficulty.find())
 
 
+# Receiving the picture for the recipe from the database
 @app.route('/file/<filename>')
 def file(filename):
     return mongo.send_file(filename)
@@ -88,9 +89,10 @@ def delete_recipe(recipe_id):
 # Editting recipe page
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
-    _recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
-    _categories = mongo.db.categories.find()
+    _recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    _categories = mongo.db.categories.find().sort('category_name', pymongo.ASCENDING)
     _difficulty = mongo.db.difficulty.find()
+
     return render_template('updaterecipe.html', recipe=_recipe, categories=_categories, difficulty=_difficulty)
 
 
@@ -102,7 +104,7 @@ def update_recipe(recipe_id):
     instructions = request.form.get('recipe_instructions').splitlines()
     you_will_need = request.form.get('you_will_need').splitlines()
     recipe_image = request.files['recipe_image']  
-    
+
     if request.method == 'POST':
         mongo.save_file(recipe_image.filename, recipe_image)
         recipes.update({'_id': ObjectId(recipe_id)},
@@ -124,10 +126,17 @@ def update_recipe(recipe_id):
 # Navbar search function
 @app.route('/navbar_search', methods=["GET", "POST"])
 def navbar_search():
-    search_input = request.form.get('navbar_search')
-    recipe_found = mongo.db.recipes.find( {"$text": { "$search": str(search_input) } } )
-    
+    search_input = request.args.get('navbar_search')
+    recipe_found = list(mongo.db.recipes.find( {"$text": { "$search": search_input } } ))
+    print(recipe_found)
     return render_template('result.html', results=recipe_found)
+
+
+# Display the selected recipe from the search
+@app.route('/show_search_result/<result_id>')
+def show_search_result(result_id):
+    show_result =  mongo.db.recipes.find_one({"_id": ObjectId(result_id)})
+    return render_template('showreciperesult.html', recipe=show_result)
 
 
 # Contact us page
@@ -136,8 +145,7 @@ def contact_us():
     return render_template('contactus.html')
 
 
-
-
+# File (picture) upload function to MongoDB
 @app.route('/add_file', methods=["GET", "POST"])
 def add_file():
     recipe_image = request.files['recipe_image']
@@ -147,6 +155,7 @@ def add_file():
         "recipe_image_name": recipe_image.filename
     })
     return 'done'
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
