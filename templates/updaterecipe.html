@@ -5,7 +5,6 @@
 </div>
 
 <!-- Add new recipe form -->
-
 <div class="row">
     <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" enctype="multipart/form-data" method="POST">
         <div class="form-row">
@@ -40,7 +39,11 @@
                 <select class="custom-select" id="category_name" name="category_name">
                     <option value="" disabled selected>Choose dietary category</option>
                     {% for cat in categories %}
-                    <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                        {% if cat.category_name == recipe.category_name %}
+                        <option value="{{cat.category_name}}" selected>{{cat.category_name}}</option>
+                        {% else %}
+                        <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
@@ -59,10 +62,14 @@
             <!-- Recipe difficulty selector values from DB.difficulty -->
             <div class="col-sm-12 col-md-6">        
                 <label for="recipe_difficulty">Recipe difficulty:<i class="fas fa-asterisk align-top"></i></label>
-                <select class="custom-select" id="recipe_difficulty" name="recipe_difficulty" required>
+                <select class="custom-select" id="recipe_difficulty" name="recipe_difficulty" required >
                     <option value="" disabled selected>Choose difficulty for your recipe</option>
                     {% for diff in difficulty %}
-                    <option value="{{diff.recipe_difficulty}}">{{diff.recipe_difficulty}}</option>
+                        {% if diff.recipe_difficulty == recipe.recipe_difficulty %}    
+                        <option value="{{diff.recipe_difficulty}}" selected>{{diff.recipe_difficulty}}</option>
+                        {% else %}
+                        <option value="{{diff.recipe_difficulty}}">{{diff.recipe_difficulty}}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <hr class="small">
@@ -75,10 +82,10 @@
             <div class="col-sm-12 col-md-12">
                 <label for="ingredients">Required ingredients:<i class="fas fa-asterisk align-top"></i></label>
                 <span id="ingredientHelp" class="form-text text-muted">Enter all ingredient in a new row (with the Enter key), please!</span> 
-                <textarea class="form-control" onkeyup="adjustHeight(this)" id="ingredients" name="ingredients" type="text" rows="1" cols="175" placeholder="For example: potato 500g  or  1 slice of lemon" required>
-                {% for ingredient in recipe.ingredients -%}
-                {{ ingredient  }}
-                {% endfor -%}
+                <textarea class="form-control" onkeyup="adjustHeight(this)" id="ingredients" name="ingredients" type="text" rows="7" cols="175" placeholder="For example: potato 500g  or  1 slice of lemon" required>
+                    {% for ingredient in recipe.ingredients -%}
+                    {{ ingredient | safe }}
+                    {% endfor -%}
                 </textarea>
             </div>            
         </div>
@@ -88,8 +95,12 @@
         <div class="form-row">
             <div class="col-sm-12 col-md-12">                
                 <label for="recipe_instructions">Enter the cooking, preparation instructions:<i class="fas fa-asterisk align-top"></i></label>
-                <span id="instructionHelp" class="form-text text-muted">Enter all ingredient in a new row, please!</span>
-                <textarea class="form-control" onkeyup="adjustHeight(this)" id="recipe_instructions" name="recipe_instructions" rows="1" cols="175" placeholder="Enter the cooking, preparation instructions:" required></textarea>
+                <span id="instructionHelp" class="form-text text-muted">Enter all ingredient in a new row (with the Enter key), please!</span>
+                <textarea class="form-control" onkeyup="adjustHeight(this)" id="recipe_instructions" name="recipe_instructions" rows="7" cols="175" placeholder="Enter the cooking, preparation instructions:" required>
+                    {% for instruction in recipe.instructions -%}
+                    {{ instruction  }}
+                    {% endfor -%}
+                </textarea>
             </div>           
         </div>
         <!-- /Cooking instructions input-->
@@ -98,8 +109,12 @@
         <div class="form-row">
             <div class="col-sm-12 col-md-12">                
                 <label for="steps">Required tools, kitchen applicants for the recipe (optional):</label>
-                <span class="form-text text-muted">Enter all tools, applicants in a new row, please!</span>
-                <textarea class="form-control" onkeyup="adjustHeight(this)" id="you_will_need" name="you_will_need" rows="1" cols="175" placeholder="For expample: blender, hand mixer, etc"></textarea>
+                <span class="form-text text-muted">Enter all tools, applicants in a new row (with the Enter key), please!</span>
+                <textarea class="form-control" onkeyup="adjustHeight(this)" id="you_will_need" name="you_will_need" rows="5" cols="175" placeholder="For expample: blender, hand mixer, etc">
+                    {% for tools in recipe.you_will_need -%}
+                    {{ tools  }}
+                    {% endfor -%}
+                </textarea>
             </div>           
         </div>
         <!-- /Required tools, kitchen applicants input-->
@@ -107,8 +122,8 @@
         <!-- Recipe picture upload-->
         <div class="form-row">
             <div class="col-sm-6 col-md-12">
-                <label for="recipe_image">You can upload a picture for your recipe (optional):</label>
-                <input class="form-control-file" type="file" id="recipe_image" name="recipe_image">
+                <label for="recipe_image">You can upload a picture for your recipe (optional): <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Please note! For security reason we are not able to load the picture from our database. If you still want to use picture for your recipe Please add the picture again before you updating the recipe!"></i></label>
+                <input class="form-control-file" type="file" id="recipe_image" name="recipe_image" value="{{recipe.recipe_image_name}}">
                 <hr>
             </div>    
         </div>
@@ -124,6 +139,5 @@
         <!-- /Form submit button -->
     </form>
 </div>
-
 <!-- /Add new recipe form -->
 {% endblock %}

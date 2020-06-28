@@ -18,3 +18,8 @@ $(document).ready(function() {
         }
     })
 }) 
+
+/* Enable tooptip */
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
