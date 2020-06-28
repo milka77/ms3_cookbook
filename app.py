@@ -128,7 +128,6 @@ def update_recipe(recipe_id):
 def navbar_search():
     search_input = request.args.get('navbar_search')
     recipe_found = list(mongo.db.recipes.find( {"$text": { "$search": search_input } } ))
-    print(recipe_found)
     return render_template('result.html', results=recipe_found)
 
 
