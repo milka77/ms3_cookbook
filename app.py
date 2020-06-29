@@ -20,9 +20,9 @@ mongo = PyMongo(app)
 # index - View of the landing page
 @app.route('/index')
 def index():
-    
     recipe_numbers = mongo.db.recipes.count()
-    return render_template('index.html', allrecipes=recipe_numbers)
+    _samples = mongo.db.recipes.aggregate([{'$sample': {'size': 4} }])
+    return render_template('index.html', allrecipes=recipe_numbers, samples=_samples)
 
 
 # View from the newrecipe.html to add new recipes to the database

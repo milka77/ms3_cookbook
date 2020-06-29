@@ -1,7 +1,40 @@
 {% extends 'base.html' %} {% block content %}
-    index 
 
-    <h2>We have ({{allrecipes}}) recipes in the database.</h2>
+<h2 class="text-center">Welcome to my cook book!</h2>
 
-    
+<span>
+    I created this online cookbook for all the food fanatic to search and share with others the tastiest recipes which you know.
+    Feel free to discover all our recipes. You can search in our existing recipes, update, delete them (please use the delete function with common sense! :) ) and of course, you can add new recipes to our
+    collection. 
+</span>
+<p>At the moment we have <span class="text-bold">{{allrecipes}} recipes</span> in our collection.</p>
+<hr>
+<div class="row recipe-list">
+    {% for sample in samples %}
+        <div class="card mb-3" style="width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    {% if sample.recipe_image_name %}
+                    <img src="{{url_for('file', filename=sample['recipe_image_name'])}}" class="card-img" alt="recipe image">
+                    {% else %}
+                    <img class="card-img" src="{{url_for('static', filename='images/img_placeholder.png')}}" alt="placeholder imgage"/>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{sample.recipe_name}}</h5>
+                        <p class="card-text">{{sample.recipe_info}}</p>
+                        <div class="row ">
+                            <a  href="{{ url_for('show_recipe', recipe_id=sample._id) }}" class="btn btn-dark mx-auto btn-recipe">View recipe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<hr>
+<div class="row">
+    <a href="{{url_for('recipes')}}" class="btn btn-dark mx-auto">Check out all of our recipes</a>
+ </div>
 {% endblock %}
