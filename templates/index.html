@@ -11,7 +11,7 @@
 <hr>
 <div class="row recipe-list">
     {% for sample in samples %}
-        <div class="card mb-3" style="width: 540px;">
+        <div class="card mb-3 recipe-card">
             <div class="row no-gutters">
                 <div class="col-md-6">
                     {% if sample.recipe_image_name %}
@@ -23,8 +23,8 @@
                 <div class="col-md-6">
                     <div class="card-body">
                         <h5 class="card-title text-center">{{sample.recipe_name}}</h5>
-                        <p class="card-text">{{sample.recipe_info}}</p>
-                        <div class="row ">
+                        <p class="card-text text-center">{{sample.recipe_info}}</p>
+                        <div class="row recipe-button">
                             <a  href="{{ url_for('show_recipe', recipe_id=sample._id) }}" class="btn btn-dark mx-auto btn-recipe">View recipe</a>
                         </div>
                     </div>

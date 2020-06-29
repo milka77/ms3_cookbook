@@ -90,6 +90,7 @@ textarea {
 .card-img {
     width: 270px;
     height: 180px;
+    
 }
 
 .recipe-list {
@@ -187,8 +188,33 @@ textarea {
         margin: 2% auto 2%;
     }
 
+    .recipe-list {
+        margin: auto;
+        width: 270px;
+    }
+
+    .card-img {
+        display: block;
+        margin: 5px auto;
+    }
+    
+    .recipe-card {
+        width: auto;
+    }
+
+    .recipe-button {
+        padding-top: 1rem;
+    }
+
     /* Footer */
     #footer {
         height: auto;
+    }
+}
+
+/* Large screen only styles */
+@media only screen and (min-width: 998px) {
+    .recipe-card {
+        width: 540px;
     }
 }

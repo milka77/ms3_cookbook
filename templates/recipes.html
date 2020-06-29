@@ -4,7 +4,7 @@
 <div class="row recipe-list">
     <!-- A for loop to display the recipes form the database  -->
     {% for recipe in recipes %}
-    <div class="card mb-3" style="width: 540px;">
+    <div class="card mb-3 recipe-card">
         <div class="row no-gutters">
             <div class="col-md-6">
                 {% if recipe.recipe_image_name %}
@@ -16,8 +16,8 @@
             <div class="col-md-6">
                 <div class="card-body">
                     <h5 class="card-title text-center">{{recipe.recipe_name}}</h5>
-                    <p class="card-text">{{recipe.recipe_info}}</p>
-                    <div class="row ">
+                    <p class="card-text text-center">{{recipe.recipe_info}}</p>
+                    <div class="row recipe-button">
                         <a  href="{{ url_for('show_recipe', recipe_id=recipe._id) }}" class="btn btn-dark mx-auto btn-recipe">View recipe</a>
                     </div>
                 </div>
