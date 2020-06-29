@@ -197,13 +197,20 @@ textarea {
         display: block;
         margin: 5px auto;
     }
-    
+
     .recipe-card {
         width: auto;
     }
 
     .recipe-button {
         padding-top: 1rem;
+    }
+
+    /* New recipe form*/
+    .center-sm {
+        width: 95vw;
+        margin: auto;
+        padding-right: 0.5em;
     }
 
     /* Footer */
