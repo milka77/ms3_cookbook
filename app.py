@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, url_for
 import env as config
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
+from flask_paginate import Pagination, get_page_args
 
 
 app = Flask(__name__)
@@ -14,6 +15,11 @@ app.config["MONGO_DBNAME"] = 'cook_book'
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
+
+def get_recipes(offset=0, per_page=10):
+    recipes = mongo.db.recipes.find()
+    return recipes[offset: offset + per_page]
+
 
 # Routes and viwes
 @app.route('/')
@@ -68,8 +74,18 @@ def insert_recipe():
 # Show all existing recipes from the database
 @app.route('/recipes')
 def recipes():
+    page, per_page, offset = get_page_args(page_parameter='page',
+                                            per_page_parameter='per_page')
+    total = mongo.db.recipes.count()
+    pagination_recipes = get_recipes(offset=offset, per_page=per_page)
+    pagination = Pagination(page=page, per_page=per_page, total=total,
+                            css_framework='bootstrap4')
+    
     return render_template('recipes.html',
-    recipes=mongo.db.recipes.find())
+                            recipes=pagination_recipes,
+                            page=page,
+                            per_page=per_page,
+                            pagination=pagination)
 
 
 # Detailed page form the selected recipe
