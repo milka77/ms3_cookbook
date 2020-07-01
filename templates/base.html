@@ -9,10 +9,10 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     
     <!-- Favicon from https://favicon.io  free favicon generator-->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='images/favicon-32x32.png')}}">   
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">   
     <!-- /Favicon from https://favicon.io  free favicon generator-->
 
     <!-- /CSS Files -->
@@ -31,7 +31,7 @@
 
     <!-- Navigation bar with search function -->
     <nav class="navbar navbar-expand-lg sticky-top cook-navbar" id="nav">
-        <a class="navbar-brand" href="{{url_for('index')}}">Krisztian's Cook Book</a>
+        <a class="navbar-brand" href="{{ url_for('index') }}">Krisztian's Cook Book</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,16 +39,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-item nav-link" href="{{url_for('recipes')}}">Recipes <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="{{ url_for('recipes') }}">Recipes <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-item nav-link" href="{{url_for('new_recipe')}}">New recipe</a>
+                <a class="nav-item nav-link" href="{{ url_for('new_recipe') }}">New recipe</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-item nav-link" href="#">Our Brand</a>
+                <a class="nav-item nav-link" href="{{ url_for('our_brand') }}">Our Brand</a>
             </li>
             <li class="nav-item">
-                <a class="nav-item nav-link" href="{{url_for('contact_us')}}">Contact Us</a>
+                <a class="nav-item nav-link" href="{{ url_for('contact_us') }}">Contact Us</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0" action="{{ url_for('navbar_search') }}">
@@ -59,9 +59,11 @@
       </nav>
     <!-- /Navigation bar with search function -->
 
+    <!-- Our brand adverising only visible @ showrecipe.html -->
     <div id="our-brand" class="container-fluid our-brand text-center">
-        <span>Why not give a try to our self-branded kitchen equipment. for more information <a href="#" >click here! >>></a></span>
+        <span>Why not give a try to our self-branded kitchen equipment. for more information <a href="{{ url_for('our_brand') }}" >click here! >>></a></span>
     </div>
+    <!-- /Our brand adverising only visible @ showrecipe.html -->
 
     <!-- The container for Flask content -->
     <div class="container">
@@ -90,7 +92,7 @@
     </footer>
     <!-- /Site footer -->
 
-<!-- JavaScript files (Bootstrap, JQuery, FontAwesome) -->
+<!-- JavaScript files (Bootstrap, JQuery, FontAwesome, static JavaScript)  -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
@@ -98,8 +100,8 @@
 <script src="https://kit.fontawesome.com/b6c120cd7f.js" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="{{url_for('static', filename='js/script.js')}}"></script>
-<!-- /JavaScript files-->
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<!-- /JavaScript files (Bootstrap, JQuery, FontAwesome, static JavaScript)  -->
 
 </body>
 </html>

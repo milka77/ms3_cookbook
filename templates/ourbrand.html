@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block content %}
+
+<h2 class="text-center">Our Brand</h2>
+
+<hr>
+<div class="row text-center"> 
+    <div class="col-sm-8">
+        <h4>Hand blender</h4>
+        <p>Technical informations:</p>
+    </div>
+    <div class="col-sm-4">
+        <img src="{{ url_for('static', filename='images/our_brand/hand_blender.jpg') }}"/>
+    </div>
+</div>
+<hr>
+<div class="row text-center"> 
+    <div class="col-sm-4">
+        <img class="our-brand-image" src="{{ url_for('static', filename='images/our_brand/ceramic_hob.jpg') }}"/>   
+    </div>
+    <div class="col-sm-8">
+        <h4>Ceramic Hob</h4>
+    </div>
+</div>
+<hr>
+<div class="row text-center"> 
+    <div class="col-sm-8">
+        <h4>Built in electic oven</h4>
+    </div>
+    <div class="col-sm-4">
+        <img class="our-brand-image" src="{{ url_for('static', filename='images/our_brand/oven.jpg') }}"/>
+    </div>
+</div>
+<hr>
+{% endblock %}

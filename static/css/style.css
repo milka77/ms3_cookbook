@@ -18,6 +18,12 @@ h2, h3 {
     color: rgb(0, 0, 255);
 }
 
+/* Our brand.html styles */
+.our-brand-image {
+    width: 75%;
+    margin: 0 auto;
+}
+
 /* Our brand stripe */
 #our-brand {
     display: none;

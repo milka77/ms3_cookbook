@@ -16,6 +16,7 @@ app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 
+# Pagination mongoDB query
 def get_recipes(offset=0, per_page=10):
     recipes = mongo.db.recipes.find()
     return recipes[offset: offset + per_page]
@@ -147,18 +148,15 @@ def navbar_search():
     return render_template('result.html', results=recipe_found)
 
 
-# Display the selected recipe from the search
-@app.route('/show_search_result/<result_id>')
-def show_search_result(result_id):
-    show_result =  mongo.db.recipes.find_one({"_id": ObjectId(result_id)})
-    return render_template('showreciperesult.html', recipe=show_result)
-
-
 # Contact us page
 @app.route('/contact_us', methods=["GET", "POST"])
 def contact_us():
     return render_template('contactus.html')
 
+
+@app.route('/our_brand')
+def our_brand():
+    return render_template('ourbrand.html')
 
 # File (picture) upload function to MongoDB
 @app.route('/add_file', methods=["GET", "POST"])
