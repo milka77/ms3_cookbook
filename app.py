@@ -1,6 +1,5 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for
-import env as config
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from flask_paginate import Pagination, get_page_args
