@@ -2,33 +2,64 @@
 
 <h2 class="text-center">Our Brand</h2>
 
+<p>Check out our self-branded kitchen appliances. Detailed information and price will come soon. If 
+    you are interested in our kitchen appliances please <a href="{{ url_for('contact_us') }}">contact us</a> with any question.
+</p>
 <hr>
+<!-- Our brand detailed information section -->
 <div class="row text-center"> 
     <div class="col-sm-8">
         <h4>Hand blender</h4>
-        <p>Technical informations:</p>
+        <p>The Total Control Hand Blender allows you to create delicious smoothies and shakes, blend soups and sauces with confidence.</p>
+        <ul class="brand-list text-left">
+            <li class="text-bold">Informations:</li>
+            <li>Powerful 600W motor for blending ingredients</li>
+            <li>One-touch operation for ease of use</li>
+            <li>Split design for easy storage</li>
+            <li>Includes blending beaker, chopper and whisk accessories</li>
+        </ul>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 brand-image-container">
         <img src="{{ url_for('static', filename='images/our_brand/hand_blender.jpg') }}"/>
     </div>
 </div>
 <hr>
 <div class="row text-center"> 
-    <div class="col-sm-4">
+    <div class="col-sm-4 brand-image-container">
         <img class="our-brand-image" src="{{ url_for('static', filename='images/our_brand/ceramic_hob.jpg') }}"/>   
     </div>
     <div class="col-sm-8">
         <h4>Ceramic Hob</h4>
+        <p>Short info about our ceramic hob</p>
+        <ul class="brand-list text-left">
+            <li class="text-bold">Informations:</li>
+            <li>Brought to you by Cookology, this modern ceramic hob has the latest safety technology such as a keylock and safety 
+                switch off, as well as features designed to make cooking easier and more enjoyable.</li>
+            <li>The hob timer will help you juggle recipes, encouraging you to try new and exciting meals for your family.</li>
+            <li>The touch controls make the hob easier to keep clean, so you won't be worried each time you want to cook about hours of cleaning up.</li>
+            <li>As long as you have measured your worktop cut-out and checked the technical drawing (under images), it should only take an electrician 
+                minutes to connect the three wires on the cable coming from the hob to the 6mm cooker cable coming out of your wall.</li>
+        </ul>
     </div>
 </div>
 <hr>
 <div class="row text-center"> 
     <div class="col-sm-8">
         <h4>Built in electic oven</h4>
+        <p>The attractive Fan Oven is an A standard energy efficiency class oven that comes in a stylish stainless steel finish.</p>
+        <ul class="brand-list text-left">
+            <li class="text-bold">Informations:</li>
+            <li>A energy rating, 4 Functions, 65 Litres Capacity</li>
+            <li>Minute minder with auto-shut off</li>
+            <li>Cooling fan, Variable grill, Double glazed door</li>
+            <li>Mark resistant stainless steel control panel</li>
+            <li>13 amp connection, Rotary controls | Warranty: 10 years parts and 1 year’s labour.</li>
+        </ul>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 brand-image-container">
         <img class="our-brand-image" src="{{ url_for('static', filename='images/our_brand/oven.jpg') }}"/>
     </div>
 </div>
+<!-- /Our brand detailed information section -->
 <hr>
 {% endblock %}

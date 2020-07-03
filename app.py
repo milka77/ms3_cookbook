@@ -24,7 +24,7 @@ def get_recipes(offset=0, per_page=10):
 
 # Routes and viwes
 @app.route('/')
-# index - View of the landing page
+# index - View of the landing page with 4 rancom recipes from the database
 @app.route('/index')
 def index():
     recipe_numbers = mongo.db.recipes.count()
