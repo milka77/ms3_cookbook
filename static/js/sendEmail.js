@@ -1,3 +1,4 @@
+/* Sending email function for the contact us form*/
 function sendMail(contactForm) {
     emailjs.send("gmail", "rosie", {
         "from_name": contactForm.name.value,

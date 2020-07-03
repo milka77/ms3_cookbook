@@ -1,7 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 <h2 class="text-center">Recipes</h2>
 <hr>
+<!-- Pagination information -->
 <div class="row page-info col-sm-12">{{pagination.info}}</div>
+<!-- /Pagination information -->
 
 <div class="row recipe-list">
     
@@ -28,12 +30,17 @@
         </div>
     </div>
     {% endfor %}
-    <!-- /A for loop to display the recipes form the database  -->
-    
+    <!-- /A for loop to display the recipes form the database  -->  
 </div>
+
+<!-- Pagination links -->
 <div class="row col-sm-12"><span class="mx-auto">{{ pagination.links }}</span></div>
+<!-- /Pagination links -->
 <hr>
+
+<!-- Link to add new recipe form -->
 <div class="row">
     <a href="{{url_for('new_recipe')}}" class="btn btn-dark mx-auto">Add new recipe</a>
- </div>
+</div>
+<!-- /Link to add new recipe form -->
 {% endblock %}

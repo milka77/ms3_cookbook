@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,500&display=swap');
 
+/* Basic styles */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #d4d4d4;
@@ -217,6 +218,7 @@ textarea {
     .small {
         display: none;
     }
+
     .recipe-left {
         max-width: 92%;
         margin: 2% auto 2%;
@@ -269,10 +271,13 @@ textarea {
 
 /* Large screen only styles */
 @media only screen and (min-width: 998px) {
+   
+    /* recipes.html */
     .recipe-card {
         width: 540px;
     }
 
+    /* Our brand page */
     .our-brand-image {
         position: absolute;
         top: 50%;
