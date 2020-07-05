@@ -1,39 +1,60 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# Krisztian's Online Cookbook
+Milestone project #3: Data Centric Development - Code Institute
 
-Welcome milka77,
+This project is an online cookbook. No authentication needed to read, search, create recipes. 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
+Link to the live site: [here](https://ci-ms3-krisztians-cook-book.herokuapp.com/)
 
-## Gitpod Reminders
+Picture here >>> 
+---
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## UX
+### User Stories
+* Landing page: 
 
-`python3 -m http.server`
+### Wireframes
 
-A blue button should appear to click: *Make Public*,
 
-Another blue button should appear to click: *Open Browser*.
+## Features
+### Existing Features
+* Landing page: 
+* Recipes: 
+* New recipe:
+* Modify, update recipe: 
+* Delete recipe:
+* Search:  
+* Contact us: 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+---
+## Technologies Used
+* HTML
+* CSS
+* JavaScript
+* Python
+* [MongoDB](https://www.mongodb.com/)
+* [Google Fonts](https://fonts.google.com/)
+* [Bootstrap 4](https://getbootstrap.com/)
+* [Font Awesome](https://fontawesome.com/)
+* [GitHub Desktop](https://desktop.github.com/)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Favicon generator](https://favicon.io)
 
-A blue button should appear to click: *Make Public*,
+---
 
-Another blue button should appear to click: *Open Browser*.
+## Testing
+### Navigation
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
 
-## Updates Since The Instructional Video
+### Testing the links
+Tested all the links manually. No broken links found during the testing. All the social media links are using the `target="_blank"` attribute and they opening in a new tab of the browser.
 
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
+### Code Validation
+* Validated the HTML code with [W3C](https://validator.w3.org/#validate_by_input) and no error found.
+* Validated the CSS code with [W3C](https://jigsaw.w3.org/css-validator/#validate_by_input) and no error found.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+## Deployment
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+---
+## Media / pictures
+The page header image is from [Free Web Headers](https://www.freewebheaders.com/)
