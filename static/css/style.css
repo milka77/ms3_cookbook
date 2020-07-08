@@ -209,6 +209,11 @@ textarea {
     padding-top: 2px;
 }
 
+#footer a:hover{
+    color: #a3a3a3;
+    font-size: 1.1rem;
+}
+
 .divider {
     padding: 0 0.5rem;
 }
