@@ -10,7 +10,17 @@ Picture here >>>
 
 ## UX
 ### User Stories
-* Landing page: 
+* Landing page: When the site will be loaded the users should find themselfs on the landing page, where they can see the header picture with a navigation bar and a welcome message and a short description about the page. Under the description they are able to see an information bar which is displaying how many total recipes are in the database. Followed by 4 random sample recipes from the collection and under the sample recipes they can find a button which takes the user to see all the recipes. At the bottom of the page they should be able to see the footer with copyright informations and with the social media links on the right. These links are changing the color and size when the user moves her/his mouse over them.
+
+* Navigation: The user should see a brand name on the left side followed by four links recipes, new recipe, our brand and contact us and finally a search bar and button on the right side. When the page has more content and the user will scroll down to see the content the header image moving out from the visual area the navigation bar colour will change to white for better visibility and will stick to the top . 
+    * __*Brand name:*__ If they click on the brand name the landing page will be loaded, returning "home" from everywhere on the page.
+    * __*Recipes:*__ By clicking the recipes link the users should see all the recipes which the site has in the database with a 10 recipe per page pagination.
+    * __*New Recipe:*__ By clicking the new recipe link users will see a form. With this form they can add new recipes to the database. 
+    * __*Our Brand:*__ By clicking the our brand link the users will see the our brand page. 
+    * __*Contact Us:*__ By clicking the contact us link the contact form will be displayed where users are able to send messages to the site owner(s).
+    * __*Search:*__ Users are able to search in between our recipes.
+
+* Recipes:  
 
 ### Wireframes
 
