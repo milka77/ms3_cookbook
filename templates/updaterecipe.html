@@ -83,9 +83,9 @@
                 <label for="ingredients">Required ingredients:<i class="fas fa-asterisk align-top"></i></label>
                 <span id="ingredientHelp" class="form-text text-muted">Enter all ingredient in a new row (with the Enter key), please!</span> 
                 <textarea class="form-control" onkeyup="adjustHeight(this)" id="ingredients" name="ingredients" type="text" rows="7" cols="175" placeholder="For example: potato 500g  or  1 slice of lemon" required>
-                    {% for ingredient in recipe.ingredients -%}
-                    {{ ingredient | safe }}
-                    {% endfor -%}
+                    {%- for ingredient in recipe.ingredients -%}
+                    {{ ingredient + "\n" | safe }} 
+                    {%- endfor -%}
                 </textarea>
             </div>            
         </div>
@@ -97,9 +97,9 @@
                 <label for="recipe_instructions">Enter the cooking, preparation instructions:<i class="fas fa-asterisk align-top"></i></label>
                 <span id="instructionHelp" class="form-text text-muted">Enter all ingredient in a new row (with the Enter key), please!</span>
                 <textarea class="form-control" onkeyup="adjustHeight(this)" id="recipe_instructions" name="recipe_instructions" rows="7" cols="175" placeholder="Enter the cooking, preparation instructions:" required>
-                    {% for instruction in recipe.instructions -%}
-                    {{ instruction  }}
-                    {% endfor -%}
+                    {%- for instruction in recipe.instructions -%}
+                    {{ instruction + "\n"  }}
+                    {%- endfor -%}
                 </textarea>
             </div>           
         </div>
@@ -111,9 +111,9 @@
                 <label for="steps">Required tools, kitchen applicants for the recipe (optional):</label>
                 <span class="form-text text-muted">Enter all tools, applicants in a new row (with the Enter key), please!</span>
                 <textarea class="form-control" onkeyup="adjustHeight(this)" id="you_will_need" name="you_will_need" rows="5" cols="175" placeholder="For expample: blender, hand mixer, etc">
-                    {% for tools in recipe.you_will_need -%}
-                    {{ tools  }}
-                    {% endfor -%}
+                    {%- for tools in recipe.you_will_need -%}
+                    {{ tools + "\n"  }}
+                    {%- endfor -%}
                 </textarea>
             </div>           
         </div>
