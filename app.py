@@ -9,11 +9,12 @@ app = Flask(__name__)
 
 app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 
-# Database (mongoDB) confugirations: 
+# Database (mongoDB) confugirations:
 app.config["MONGO_DBNAME"] = 'cook_book'
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
+
 
 # Pagination mongoDB query
 def get_recipes(offset=0, per_page=10):
@@ -27,16 +28,23 @@ def get_recipes(offset=0, per_page=10):
 @app.route('/index')
 def index():
     recipe_numbers = mongo.db.recipes.count()
-    _samples = mongo.db.recipes.aggregate([{'$sample': {'size': 4} }])
-    return render_template('index.html', allrecipes=recipe_numbers, samples=_samples)
+    _samples = mongo.db.recipes.aggregate([{'$sample': {'size': 4}}])
+    return render_template(
+                            'index.html',
+                            allrecipes=recipe_numbers,
+                            samples=_samples
+                            )
 
 
 # View from the newrecipe.html to add new recipes to the database
 @app.route('/new_recipe')
 def new_recipe():
-    return render_template('newrecipe.html',
-    categories=mongo.db.categories.find().sort('category_name', pymongo.ASCENDING),
-    difficulty=mongo.db.difficulty.find())
+    return render_template(
+                            'newrecipe.html',
+                            categories=mongo.db.categories.find().sort(
+                                        'category_name', pymongo.ASCENDING),
+                            difficulty=mongo.db.difficulty.find()
+                            )
 
 
 # Receiving the picture for the recipe from the database
@@ -52,7 +60,7 @@ def insert_recipe():
     ingredients = request.form.get('ingredients').splitlines()
     instructions = request.form.get('recipe_instructions').splitlines()
     you_will_need = request.form.get('you_will_need').splitlines()
-    recipe_image = request.files['recipe_image']     
+    recipe_image = request.files['recipe_image']
 
     if request.method == 'POST':
         mongo.save_file(recipe_image.filename, recipe_image)
@@ -74,18 +82,22 @@ def insert_recipe():
 # Show all existing recipes from the database
 @app.route('/recipes')
 def recipes():
-    page, per_page, offset = get_page_args(page_parameter='page',
-                                            per_page_parameter='per_page')
+    page, per_page, offset = get_page_args(
+                                            page_parameter='page',
+                                            per_page_parameter='per_page'
+                                            )
     total = mongo.db.recipes.count()
     pagination_recipes = get_recipes(offset=offset, per_page=per_page)
     pagination = Pagination(page=page, per_page=per_page, total=total,
                             css_framework='bootstrap4')
-    
-    return render_template('recipes.html',
+
+    return render_template(
+                            'recipes.html',
                             recipes=pagination_recipes,
                             page=page,
                             per_page=per_page,
-                            pagination=pagination)
+                            pagination=pagination
+                            )
 
 
 # Detailed page form the selected recipe
@@ -95,7 +107,7 @@ def show_recipe(recipe_id):
     return render_template('showrecipe.html', recipe=_recipe)
 
 
-# Deleting a recipe 
+# Deleting a recipe
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
@@ -106,10 +118,18 @@ def delete_recipe(recipe_id):
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     _recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    _categories = mongo.db.categories.find().sort('category_name', pymongo.ASCENDING)
+    _categories = mongo.db.categories.find().sort(
+                                                    'category_name',
+                                                    pymongo.ASCENDING
+                                                    )
     _difficulty = mongo.db.difficulty.find()
 
-    return render_template('updaterecipe.html', recipe=_recipe, categories=_categories, difficulty=_difficulty)
+    return render_template(
+                            'updaterecipe.html',
+                            recipe=_recipe,
+                            categories=_categories,
+                            difficulty=_difficulty
+                            )
 
 
 # Updating recipe function
@@ -119,23 +139,25 @@ def update_recipe(recipe_id):
     ingredients = request.form.get('ingredients').splitlines()
     instructions = request.form.get('recipe_instructions').splitlines()
     you_will_need = request.form.get('you_will_need').splitlines()
-    recipe_image = request.files['recipe_image']  
+    recipe_image = request.files['recipe_image']
 
     if request.method == 'POST':
         mongo.save_file(recipe_image.filename, recipe_image)
-        recipes.update({'_id': ObjectId(recipe_id)},
-        {
-            "recipe_name": request.form.get('recipe_name'),
-            "recipe_info": request.form.get('recipe_info'),
-            "cooking_time": request.form.get('cooking_time'),
-            "category_name": request.form.get('category_name'),
-            "servings_size": request.form.get('servings_size'),
-            "recipe_difficulty": request.form.get('recipe_difficulty'),
-            "ingredients": ingredients,
-            "instructions": instructions,
-            "you_will_need": you_will_need,
-            "recipe_image_name": recipe_image.filename
-        })
+        recipes.update(
+                        {'_id': ObjectId(recipe_id)},
+                        {
+                            "recipe_name": request.form.get('recipe_name'),
+                            "recipe_info": request.form.get('recipe_info'),
+                            "cooking_time": request.form.get('cooking_time'),
+                            "category_name": request.form.get('category_name'),
+                            "servings_size": request.form.get('servings_size'),
+                            "recipe_difficulty": request.form.get(
+                                'recipe_difficulty'),
+                            "ingredients": ingredients,
+                            "instructions": instructions,
+                            "you_will_need": you_will_need,
+                            "recipe_image_name": recipe_image.filename
+                        })
     return redirect(url_for('recipes'))
 
 
@@ -143,7 +165,8 @@ def update_recipe(recipe_id):
 @app.route('/navbar_search', methods=["GET", "POST"])
 def navbar_search():
     search_input = request.args.get('navbar_search')
-    recipe_found = list(mongo.db.recipes.find( {"$text": { "$search": search_input } } ))
+    recipe_found = list(mongo.db.recipes.find(
+        {"$text": {"$search": search_input}}))
     return render_template('result.html', results=recipe_found)
 
 
@@ -157,12 +180,13 @@ def contact_us():
 def our_brand():
     return render_template('ourbrand.html')
 
+
 # File (picture) upload function to MongoDB
 @app.route('/add_file', methods=["GET", "POST"])
 def add_file():
     recipe_image = request.files['recipe_image']
     mongo.save_file(recipe_image.filename, recipe_image)
-    mongo.db.recipes.insert({ 
+    mongo.db.recipes.insert({
         "recipe_name": request.form.get('recipe_name'),
         "recipe_image_name": recipe_image.filename
     })
@@ -171,5 +195,5 @@ def add_file():
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-        port=os.environ.get('PORT'),
-        debug=True)
+            port=os.environ.get('PORT'),
+            debug=True)
