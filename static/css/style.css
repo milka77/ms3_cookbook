@@ -244,12 +244,15 @@ textarea {
         padding-top: 1rem;
     }
 
+    .recipe_image {
+        max-width: 85vw;
+    }
     /* Pagination info */
     .page-info {
         text-align: center;
     }
 
-    /* New recipe form*/
+    /* New recipe update form*/
     .center-sm {
         width: 95vw;
         margin: auto;
