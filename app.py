@@ -3,7 +3,7 @@ from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from flask_paginate import Pagination, get_page_args
-
+import env as config
 
 app = Flask(__name__)
 
@@ -154,7 +154,7 @@ def edit_recipe(recipe_id):
                             )
 
 
-@app.route('/update_recipe/<recipe_id>', methods=["POST"])
+@app.route('/update_recipe/<recipe_id>', methods=["GET","POST"])
 def update_recipe(recipe_id):
     """
     Updating recipe function
@@ -164,7 +164,6 @@ def update_recipe(recipe_id):
     instructions = request.form.get('recipe_instructions').splitlines()
     you_will_need = request.form.get('you_will_need').splitlines()
     recipe_image = request.files['recipe_image']
-
     if request.method == 'POST':
         mongo.save_file(recipe_image.filename, recipe_image)
         recipes.update(
