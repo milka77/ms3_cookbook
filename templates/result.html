@@ -5,28 +5,36 @@
 <hr>
 <div class="row recipe-list">
 <!-- A for loop to display all the hits by search function -->
-{% for result in results %}
-    <div class="card mb-3 recipe-card">
-        <div class="row no-gutters">
-            <div class="col-md-6">
-                {% if result.recipe_image_name %}
-                <img src="{{url_for('file', filename=result['recipe_image_name'])}}" class="card-img" alt="recipe image">
-                {% else %}
-                <img class="card-img" src="{{url_for('static', filename='images/img_placeholder.png')}}" alt="placeholder imgage"/>
-                {% endif %}
-            </div>
-            <div class="col-md-6">
-                <div class="card-body">
-                    <h5 class="card-title text-center">{{result.recipe_name}}</h5>
-                    <p class="card-text text-center">{{result.recipe_info}}</p>
-                    <div class="row recipe-button">
-                        <a  href="{{ url_for('show_recipe', recipe_id=result._id) }}" class="btn btn-dark mx-auto btn-recipe">View recipe</a>
+{% if results %}
+    {% for result in results %}
+        <div class="card mb-3 recipe-card">
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    {% if result.recipe_image_name %}
+                    <img src="{{url_for('file', filename=result['recipe_image_name'])}}" class="card-img" alt="recipe image">
+                    {% else %}
+                    <img class="card-img" src="{{url_for('static', filename='images/img_placeholder.png')}}" alt="placeholder imgage"/>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{result.recipe_name}}</h5>
+                        <p class="card-text text-center">{{result.recipe_info}}</p>
+                        <div class="row recipe-button">
+                            <a  href="{{ url_for('show_recipe', recipe_id=result._id) }}" class="btn btn-dark mx-auto btn-recipe">View recipe</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-{% endfor %}
+    {% endfor %}
+{% else %}
+<div class="col text-center">
+    <span>Something went wrong...</span>
+    <p>Your search criteria <span class="text-bold">{{search_input}}</span> was not found in our recipes.
+    </p>
+</div>
+{% endif %}
 <!-- /A for loop to display all the hits by search function -->
 </div>
 <hr>
