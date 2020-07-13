@@ -192,7 +192,11 @@ def navbar_search():
     search_input = request.args.get('navbar_search')
     recipe_found = list(mongo.db.recipes.find(
         {"$text": {"$search": search_input}}))
-    return render_template('result.html', results=recipe_found)
+    return render_template(
+                            'result.html', 
+                            results=recipe_found, 
+                            search_input=search_input
+                            )
 
 
 @app.route('/contact_us', methods=["GET", "POST"])
