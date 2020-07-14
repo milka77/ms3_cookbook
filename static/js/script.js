@@ -16,10 +16,10 @@ $(document).ready(function() {
             $('#nav').removeClass('navbar-light');
             $('#nav').addClass('cook-navbar');
         }
-    })
-}) 
+    });
+});
 
 /* Enable tooptip */
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+    $('[data-toggle="tooltip"]').tooltip();
+  });

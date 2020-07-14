@@ -17,6 +17,5 @@ function sendMail(contactForm) {
             document.getElementById('email-message').innerHTML = "Oops Something went wrong!";
             document.getElementById('email-message').classList.add('email-failed');
         });
-    return false;
-    
+    return false;   
 }

@@ -17,14 +17,12 @@ app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 mongo = PyMongo(app)
 
 
-
 def get_recipes(offset=0, per_page=10):
     """
     Pagination mongoDB query
     """
     recipes = mongo.db.recipes.find()
     return recipes[offset: offset + per_page]
-
 
 
 @app.route('/')
@@ -153,7 +151,7 @@ def edit_recipe(recipe_id):
                             )
 
 
-@app.route('/update_recipe/<recipe_id>', methods=["GET","POST"])
+@app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
 def update_recipe(recipe_id):
     """
     Updating recipe function
@@ -192,8 +190,8 @@ def navbar_search():
     recipe_found = list(mongo.db.recipes.find(
         {"$text": {"$search": search_input}}))
     return render_template(
-                            'result.html', 
-                            results=recipe_found, 
+                            'result.html',
+                            results=recipe_found,
                             search_input=search_input
                             )
 
