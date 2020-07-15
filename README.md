@@ -5,7 +5,7 @@ This project is an online cookbook. No authentication needed to read, search, cr
 
 Link to the live site on Heroku: [here](https://ci-ms3-krisztians-cook-book.herokuapp.com/)
 
-<img src="https://github.com/milka77/ms3_cookbook/tree/master/static/images/responsive.png"/>
+<img src="https://raw.githubusercontent.com/milka77/ms3_cookbook/master/static/images/responsive.png"/>
 ---
 
 ## User Experience (UX)
