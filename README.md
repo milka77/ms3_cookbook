@@ -94,7 +94,7 @@ Link to the live site on Heroku: [here](https://ci-ms3-krisztians-cook-book.hero
 
 ## Testing
 ### Responsiveness 
-The site was tested with multiple browsers(Opera, Firefox, Chrome, MS Edge) and devices(desktop PC, iPad mini, iPhone SE 2020 and iPhone 6), and with all the options from Chrome Development tools. The pictures and the design were responsive and displayed as they should be. 
+The site was tested with multiple browsers(Opera, Firefox, Chrome, MS Edge) and devices(desktop PC, iPad mini, iPhone SE 2020 and iPhone 6), and with all the options from Chrome Development tools. The pictures and the design were responsive and displayed as they should be. I asked few friends and family members to test the site on their device. 
 
 ### Code Validation
 * Validated the HTML code with [W3C](https://validator.w3.org/#validate_by_input) and no error found.
@@ -154,6 +154,10 @@ The site was tested with multiple browsers(Opera, Firefox, Chrome, MS Edge) and 
     Tried to submit a form when not all of the required fields was filled out. An error message was displayed that one of the required filed is empty and will be highlighted. At the __Email__ field if it's filled out with not a valid email form, by the submitting will display that the __Email__ field is not containing a @ symbol. After every field is filled out with the correct way and the message submitted, a message displayed as an acknowledgement that the message sent successfully or not.
 - #### Search bar
     I typed in the search bar a few ingredient names and pressed enter. All the recipes were displayed which containing the searched ingredient. If there was nothing found in the database an error message was displayed that the search was not found matching data in the recipes.
+
+### Known Bugs
+- Update function will remove the image if the image not added again to the file input before sumbitting. (Unfortunatly because of the short project submit deadline don't have time to fix this bug. Will do it later)
+
 ---
 ## Deployment
 - #### Heroku Deployment
