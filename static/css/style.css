@@ -218,8 +218,25 @@ textarea {
     padding: 0 0.5rem;
 }
 
-/* Mobile screen size styles */
+/* Tablet screen size styles */
 @media only screen and (max-width: 768px) {
+    .recipe-card {
+        min-width: 550px;
+    }
+
+    .recipe-list {
+        margin: auto;
+        width: 550px;
+    }
+
+    /* Pagination info */
+    .page-info {
+        text-align: center;
+    }
+}
+
+/* Mobile screen size styles */
+@media only screen and (max-width: 600px) {
 
     .recipe-left {
         max-width: 92%;
@@ -237,7 +254,8 @@ textarea {
     }
 
     .recipe-card {
-        width: auto;
+        min-width: 270px;
+        
     }
 
     .recipe-button {
@@ -247,10 +265,7 @@ textarea {
     .recipe_image {
         max-width: 85vw;
     }
-    /* Pagination info */
-    .page-info {
-        text-align: center;
-    }
+
 
     /* New recipe update form*/
     .center-sm {
