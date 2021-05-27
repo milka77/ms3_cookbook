@@ -127,7 +127,9 @@ def delete_recipe(recipe_id):
     """
     Deleting a recipe
     """
+    """
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    """
     return redirect(url_for('recipes'))
 
 
